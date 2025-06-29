@@ -44,6 +44,7 @@
             background: var(--main-blue);
             color: #fff;
             padding: 0;
+            min-height: 320px;
         }
         .header-bar {
             display: flex;
@@ -68,50 +69,62 @@
         .profile-section {
             background: var(--main-blue);
             color: #fff;
-            padding: 2.5rem 0 0 0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            min-height: 320px;
+            padding: 0 0 0 0;
+            position: relative;
         }
-        .profile-row {
+        .profile-inner {
             display: flex;
             align-items: center;
             gap: 2.5rem;
-            max-width: 900px;
+            max-width: 1100px;
             width: 100%;
         }
         .profile-photo {
-            width: 160px;
-            height: 160px;
-            border-radius: 10px;
+            width: 180px;
+            height: 180px;
+            border-radius: 12px;
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border: 6px solid #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+            background: #fff;
+            flex-shrink: 0;
+            margin-left: 2rem;
         }
         .profile-main {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
         }
         .profile-main h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 700;
-            margin: 0 0 0.3rem 0;
+            margin: 0 0 0.2rem 0;
+            letter-spacing: 0.5px;
         }
         .profile-main h2 {
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin: 0 0 1.2rem 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 0 1.1rem 0;
             color: #c7d2fe;
+            letter-spacing: 0.2px;
         }
         .profile-main p {
             font-size: 1.05rem;
             color: #e0e7ff;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.1rem;
+            max-width: 520px;
         }
         .profile-links {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.1rem;
         }
         .linkedin-btn {
             background: #fff;
@@ -138,11 +151,11 @@
             display: flex;
             gap: 2.5rem;
             margin-top: 1.2rem;
-            margin-bottom: -2.5rem;
+            margin-bottom: 0;
             position: relative;
             z-index: 2;
-            background: var(--main-blue);
-            padding: 1.2rem 2.5rem 1.2rem 2.5rem;
+            background: rgba(255,255,255,0.07);
+            padding: 1.1rem 2.5rem 1.1rem 2.5rem;
             border-radius: 12px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.08);
         }
@@ -158,6 +171,52 @@
             font-size: 1rem;
             color: #c7d2fe;
         }
+        /* Languages Section */
+        .languages-section {
+            margin: 2.5rem 0 2rem 0;
+        }
+        .languages-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--main-blue);
+            margin-bottom: 1rem;
+        }
+        .languages-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2.2rem;
+            justify-content: flex-start;
+        }
+        .language {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 170px;
+            min-height: 90px;
+            margin-bottom: 1.5rem;
+            background: #f7f9fb;
+            border-radius: 8px;
+            padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+            box-sizing: border-box;
+        }
+        .language-label {
+            font-size: 1.02rem;
+            color: var(--text-main);
+            text-align: center;
+            word-break: break-word;
+            margin-bottom: 0.2rem;
+        }
+        .language-level {
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            margin-bottom: 0.1rem;
+            text-align: center;
+        }
+        .language-stars {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
         /* Main Content */
         .main-content {
             max-width: 1100px;
@@ -165,7 +224,7 @@
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-            margin-top: 40px;
+            margin-top: 0;
             padding: 2.5rem 2.5rem 1.5rem 2.5rem;
             position: relative;
             z-index: 1;
@@ -189,12 +248,19 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1.2rem 2.2rem;
+            justify-content: flex-start;
         }
         .skill {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 90px;
+            width: 170px;
+            min-height: 110px;
+            margin-bottom: 1.5rem;
+            background: #f7f9fb;
+            border-radius: 8px;
+            padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+            box-sizing: border-box;
         }
         .skill img {
             width: 38px;
@@ -207,9 +273,48 @@
             margin-bottom: 0.2rem;
         }
         .skill-label {
-            font-size: 0.95rem;
+            font-size: 1.02rem;
             color: var(--text-main);
             text-align: center;
+            word-break: break-word;
+            margin-bottom: 0.2rem;
+        }
+        .skill-level {
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            margin-bottom: 0.1rem;
+            text-align: center;
+        }
+        /* Functional Domains */
+        .functional-section {
+            margin: 2.5rem 0 2rem 0;
+            background: #f7f9fb;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+        }
+        .functional-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--main-blue);
+            margin-bottom: 1rem;
+        }
+        .functional-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+        .functional-list li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .functional-list li:before {
+            content: '\25BA';
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
         }
         /* Services */
         .services-list {
@@ -314,11 +419,13 @@
         }
         @media (max-width: 900px) {
             .main-content { padding: 1.2rem; }
-            .profile-row { flex-direction: column; align-items: center; gap: 1.5rem; }
+            .profile-inner { flex-direction: column; align-items: center; gap: 1.5rem; }
             .two-col { flex-direction: column; gap: 2rem; }
             .project { flex-direction: column; gap: 1rem; }
             .project-img { width: 100%; height: 180px; }
             .profile-stats { flex-direction: column; gap: 1.2rem; padding: 1.2rem; }
+            .skills-list { justify-content: center; }
+            .skill { width: 90vw; max-width: 320px; }
         }
     </style>
 </head>
@@ -331,7 +438,7 @@
             </nav>
         </div>
         <div class="profile-section">
-            <div class="profile-row">
+            <div class="profile-inner">
                 <img src="qa-engineer_files/piotr-sujecki.jpg" alt="Piotr Sujecki" class="profile-photo">
                 <div class="profile-main">
                     <h1>Piotr Sujecki</h1>
@@ -342,20 +449,20 @@
                             <img src="qa-engineer_files/github.svg" alt="LinkedIn">LinkedIn Profile
                         </a>
                     </div>
-                </div>
-            </div>
-            <div class="profile-stats">
-                <div class="stat">
-                    <div class="stat-value">5</div>
-                    <div class="stat-label">years<br>of experience</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">5</div>
-                    <div class="stat-label">projects<br>finished successfully</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">4+</div>
-                    <div class="stat-label">happy<br>clients</div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">years<br>of experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">projects<br>finished successfully</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">4+</div>
+                            <div class="stat-label">happy<br>clients</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -380,17 +487,29 @@
             <div class="col">
                 <div class="section-title">Skills & Tools</div>
                 <div class="skills-list">
-                    <div class="skill"><img src="qa-engineer_files/manual-tests.svg" alt="Manual Tests"><span class="stars">★★★★★</span><span class="skill-label">Manual tests</span></div>
-                    <div class="skill"><img src="qa-engineer_files/automated-tests.svg" alt="Automated Tests"><span class="stars">★★★★★</span><span class="skill-label">Automated tests</span></div>
-                    <div class="skill"><img src="qa-engineer_files/cypress.svg" alt="Cypress"><span class="stars">★★★★☆</span><span class="skill-label">Cypress</span></div>
-                    <div class="skill"><img src="qa-engineer_files/typescript.svg" alt="TypeScript"><span class="stars">★★★★☆</span><span class="skill-label">TypeScript</span></div>
-                    <div class="skill"><img src="qa-engineer_files/javascript.svg" alt="JavaScript"><span class="stars">★★★★☆</span><span class="skill-label">JavaScript</span></div>
-                    <div class="skill"><img src="qa-engineer_files/testrail.svg" alt="TestRail"><span class="stars">★★★★☆</span><span class="skill-label">TestRail</span></div>
-                    <div class="skill"><img src="qa-engineer_files/playwright.svg" alt="Playwright"><span class="stars">★★★★☆</span><span class="skill-label">Playwright</span></div>
-                    <div class="skill"><img src="qa-engineer_files/github.svg" alt="GitHub"><span class="stars">★★★★☆</span><span class="skill-label">GitHub</span></div>
-                    <div class="skill"><img src="qa-engineer_files/postman.svg" alt="Postman"><span class="stars">★★★★☆</span><span class="skill-label">Postman</span></div>
+                    <div class="skill"><img src="qa-engineer_files/manual-tests.svg" alt="Manual Tests"><span class="stars">★★★★★</span><span class="skill-label">Manual tests</span><span class="skill-level">Excellent</span></div>
+                    <div class="skill"><img src="qa-engineer_files/automated-tests.svg" alt="Automated Tests"><span class="stars">★★★★★</span><span class="skill-label">Test Automation</span><span class="skill-level">Excellent</span></div>
+                    <div class="skill"><img src="qa-engineer_files/postman.svg" alt="REST API"><span class="stars">★★★☆☆</span><span class="skill-label">REST API</span><span class="skill-level">Intermediate</span></div>
+                    <div class="skill"><img src="qa-engineer_files/typescript.svg" alt="TypeScript"><span class="stars">★★★★☆</span><span class="skill-label">TypeScript/JavaScript</span><span class="skill-level">Advanced</span></div>
+                    <div class="skill"><img src="qa-engineer_files/github.svg" alt="Git"><span class="stars">★★★★★</span><span class="skill-label">Git</span><span class="skill-level">Excellent</span></div>
+                    <div class="skill"><img src="qa-engineer_files/cypress.svg" alt="Cypress"><span class="stars">★★★★☆</span><span class="skill-label">Cypress/Playwright</span><span class="skill-level">Intermediate</span></div>
+                    <div class="skill"><img src="qa-engineer_files/postman.svg" alt="Postman"><span class="stars">★★★★☆</span><span class="skill-label">Postman</span><span class="skill-level">Advanced</span></div>
+                    <div class="skill"><img src="qa-engineer_files/manual-tests.svg" alt="Jira"><span class="stars">★★★☆☆</span><span class="skill-label">Jira/Clickup/Notion</span><span class="skill-level">Intermediate</span></div>
+                    <div class="skill"><img src="qa-engineer_files/building-testing-scenarios.svg" alt="Testing Scenarios"><span class="stars">★★★★☆</span><span class="skill-label">Testing Scenarios/Documentation</span><span class="skill-level">Intermediate</span></div>
+                    <div class="skill"><img src="qa-engineer_files/testrail.svg" alt="TestRail"><span class="stars">★★★★☆</span><span class="skill-label">TestRail/Qase</span><span class="skill-level">Intermediate</span></div>
+                    <div class="skill"><img src="qa-engineer_files/github.svg" alt="GitHub"><span class="stars">★★★★☆</span><span class="skill-label">GitHub</span><span class="skill-level">Advanced</span></div>
+                    <div class="skill"><img src="qa-engineer_files/manual-tests.svg" alt="Agile"><span class="stars">★★★★☆</span><span class="skill-label">Agile</span><span class="skill-level">Independent</span></div>
+                    <div class="skill"><img src="qa-engineer_files/browserstack.svg" alt="Browserstack"><span class="stars">★★★☆☆</span><span class="skill-label">Browserstack</span><span class="skill-level">Independent</span></div>
                 </div>
             </div>
+        </div>
+        <div class="functional-section">
+            <div class="functional-title">Functional Domains</div>
+            <ul class="functional-list">
+                <li>Business Process Optimisation and Automation</li>
+                <li>Data Processing and Analysis</li>
+                <li>Software Quality Strategy &amp; Process Design</li>
+            </ul>
         </div>
         <div class="services-list">
             <div class="service"><img src="qa-engineer_files/revisit.svg" alt="Check">Test Analysis & Design</div>
@@ -437,6 +556,31 @@
         <div class="contrib-section">
             <div class="contrib-title">Contributions & Resources</div>
             <div>10 Proven Steps to Quickly Write a QA Test Plan</div>
+        </div>
+        <div class="languages-section">
+            <div class="languages-title">Languages</div>
+            <div class="languages-list">
+                <div class="language">
+                    <span class="language-label">English</span>
+                    <span class="language-stars">★★★★★</span>
+                    <span class="language-level">C1</span>
+                </div>
+                <div class="language">
+                    <span class="language-label">Polish</span>
+                    <span class="language-stars">★★★★★</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language">
+                    <span class="language-label">Italian</span>
+                    <span class="language-stars">★★☆☆☆</span>
+                    <span class="language-level">Basic</span>
+                </div>
+                <div class="language">
+                    <span class="language-label">French</span>
+                    <span class="language-stars">★★☆☆☆</span>
+                    <span class="language-level">Basic</span>
+                </div>
+            </div>
         </div>
     </main>
     <footer class="site-footer">
