@@ -17,1101 +17,435 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="qa-engineer_files/github.svg">
     
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
+    
     <style>
-        * {
+        :root {
+            --main-blue: #1a3365;
+            --accent-blue: #2e6cff;
+            --soft-bg: #f7f9fb;
+            --border: #e5e7eb;
+            --text-main: #222;
+            --text-muted: #666;
+            --stat-blue: #2e6cff;
+            --stat-green: #1ecb8b;
+        }
+        html, body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--soft-bg);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
         /* Header */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
+        .site-header {
+            background: var(--main-blue);
+            color: #fff;
+            padding: 0;
         }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-        }
-
-        .header-text h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .header-text h2 {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
+        .header-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.5rem 2rem;
         }
-
-        .nav-links {
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
             display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        /* Sections */
-        section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-icon {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1rem;
-        }
-
-        /* Experience Section */
-        .experience-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .experience-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-left: 4px solid #667eea;
-        }
-
-        .experience-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card .company {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card .period {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .responsibilities {
-            margin-top: 1.5rem;
-        }
-
-        .responsibilities h4 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-
-        .responsibilities ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .responsibilities li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .responsibilities li:before {
-            content: "•";
-            color: #667eea;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .tech-stack {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .tech-stack h4 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: #667eea;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        /* Skills Section */
-        .skills-section {
-            background: white;
-        }
-
-        .skills-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .skill-category h3 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem 0;
         }
-
-        .skill-name {
+        .logo img {
+            height: 32px;
+            margin-right: 10px;
+        }
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav a {
+            color: #fff;
             font-weight: 500;
-        }
-
-        .skill-level {
-            display: flex;
-            gap: 0.2rem;
-        }
-
-        .star {
-            color: #ffd700;
-            font-size: 1.2rem;
-        }
-
-        .star.empty {
-            color: #ddd;
-        }
-
-        .skill-description {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.3rem;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-content p {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: #f0f0f0;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .education-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .education-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .institution {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .period {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Certifications Section */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .certification-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .certification-image {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 1rem;
-            object-fit: contain;
-        }
-
-        /* Languages Section */
-        .languages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .language-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .language-card h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .language-level {
-            font-weight: bold;
-            color: #666;
-        }
-
-        /* Hobbies Section */
-        .hobbies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .hobby-card {
-            background: white;
-            padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .hobby-card h3 {
-            color: #667eea;
             font-size: 1rem;
+            transition: color 0.2s;
         }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+        .nav a:hover {
+            color: var(--stat-blue);
         }
-
-        .contact-links {
+        /* Profile Section */
+        .profile-section {
+            background: var(--main-blue);
+            color: #fff;
+            padding: 2.5rem 0 2rem 0;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-row {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            max-width: 900px;
+            width: 100%;
+        }
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .profile-main {
+            flex: 1;
+        }
+        .profile-main h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0 0 0.3rem 0;
+        }
+        .profile-main h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin: 0 0 1.2rem 0;
+            color: #c7d2fe;
+        }
+        .profile-main p {
+            font-size: 1.05rem;
+            color: #e0e7ff;
+            margin-bottom: 1.2rem;
+        }
+        .profile-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .linkedin-btn {
+            background: #fff;
+            color: var(--main-blue);
+            border-radius: 5px;
+            padding: 0.4rem 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: background 0.2s;
+        }
+        .linkedin-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        .linkedin-btn:hover {
+            background: #e0e7ff;
+        }
+        .profile-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 1.2rem;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--stat-blue);
+        }
+        .stat-label {
+            font-size: 1rem;
+            color: #c7d2fe;
+        }
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+            margin-top: -40px;
+            padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+        }
+        .two-col {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        .col {
+            flex: 1;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--main-blue);
+        }
+        /* Skills & Tools */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2.2rem;
+        }
+        .skill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90px;
+        }
+        .skill img {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 0.3rem;
+        }
+        .stars {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .skill-label {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            text-align: center;
+        }
+        /* Services */
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
             justify-content: center;
+            margin: 2.5rem 0 2rem 0;
+        }
+        .service {
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            color: var(--main-blue);
+            font-weight: 500;
+            gap: 0.6rem;
+        }
+        .service img {
+            width: 22px;
+            height: 22px;
+        }
+        /* Certificates */
+        .cert-section {
+            text-align: center;
+            margin: 2.5rem 0 2rem 0;
+        }
+        .cert-section img {
+            width: 260px;
+            margin: 1.2rem 0;
+        }
+        /* Projects */
+        .projects-section {
+            margin: 2.5rem 0 2rem 0;
+        }
+        .project {
+            display: flex;
             gap: 2rem;
+            margin-bottom: 2.5rem;
+            align-items: flex-start;
+        }
+        .project-img {
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #e5e7eb;
+        }
+        .project-details {
+            flex: 1;
+        }
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--main-blue);
+            margin-bottom: 0.3rem;
+        }
+        .project-desc {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            margin-bottom: 0.7rem;
+        }
+        .project-contrib {
+            font-size: 0.97rem;
+            color: var(--text-main);
+            margin-bottom: 0.7rem;
+        }
+        .case-btn {
+            display: inline-block;
+            background: var(--main-blue);
+            color: #fff;
+            border-radius: 5px;
+            padding: 0.4rem 1.1rem;
+            font-weight: 600;
+            font-size: 0.98rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .case-btn:hover {
+            background: var(--stat-blue);
+        }
+        /* Contributions */
+        .contrib-section {
+            background: #f7f9fb;
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            border-radius: 0 0 12px 12px;
             margin-top: 2rem;
         }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: #667eea;
-            font-weight: 500;
-            transition: color 0.3s ease;
+        .contrib-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--main-blue);
+            margin-bottom: 1rem;
         }
-
-        .contact-link:hover {
-            color: #764ba2;
-        }
-
-        .contact-icon {
-            width: 24px;
-            height: 24px;
-        }
-
         /* Footer */
-        footer {
-            background: #333;
-            color: white;
+        .site-footer {
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
+            color: #aaa;
+            font-size: 0.95rem;
+            margin: 2rem 0 0 0;
+            padding-bottom: 1.2rem;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .skills-categories {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        @media (max-width: 900px) {
+            .main-content { padding: 1.2rem; }
+            .profile-row { flex-direction: column; align-items: center; gap: 1.5rem; }
+            .two-col { flex-direction: column; gap: 2rem; }
+            .project { flex-direction: column; gap: 1rem; }
+            .project-img { width: 100%; height: 180px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <img src="qa-engineer_files/piotr-sujecki.jpg" alt="Piotr Sujecki" class="profile-image">
-                <div class="header-text">
+    <header class="site-header">
+        <div class="header-bar">
+            <div class="logo">
+                <img src="qa-engineer_files/github.svg" alt="Soft Kraft Logo">
+                Soft Kraft
+            </div>
+            <nav class="nav">
+                <a href="#skills">Services & Skills</a>
+                <a href="#projects">Projects</a>
+            </nav>
+        </div>
+        <div class="profile-section">
+            <div class="profile-row">
+                <img src="qa-engineer_files/piotr-sujecki.jpg" alt="Piotr Sujecki" class="profile-photo">
+                <div class="profile-main">
                     <h1>Piotr Sujecki</h1>
-                    <h2>QA Engineer</h2>
+                    <h2>Quality Assurance Engineer</h2>
+                    <p>QA Engineer with 4 years of professional experience, specializing in both manual and automated testing, and previously in the logistic sector and R&D. Degree in Computer Science. Excels in test scenarios, system integration, and resolving complex software-hardware issues. Passionate about aviation, paragliding, and a drone pilot instructor, bringing a unique perspective and value to the team.</p>
+                    <div class="profile-links">
+                        <a href="https://www.linkedin.com/in/piotr-sujecki-qa" class="linkedin-btn" target="_blank">
+                            <img src="qa-engineer_files/github.svg" alt="LinkedIn">LinkedIn Profile
+                        </a>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">years<br>of experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">projects<br>finished successfully</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">4+</div>
+                            <div class="stat-label">happy<br>clients</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <h3>Portfolio</h3>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#languages">Languages</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Quality Assurance Engineer with 4 years of professional experience, specializing in both manual and automated testing, and previously in the logistic sector and R&D (Research and Development) department. I have a degree in Computer Science, and excel in creating and executing comprehensive test scenarios, integrating systems, and resolving complex software-hardware issues.</p>
-                    <br>
-                    <p>With my unique combination of experience and passion for aviation, paragliding and the fact that I am a drone pilot instructor, I can bring a distinctive perspective and value to the team.</p>
-                    <br>
-                    <p>I am committed to continuous learning and staying updated with the latest testing technologies and industry best practices to deliver exceptional results.</p>
+    <main class="main-content">
+        <div class="two-col">
+            <div class="col">
+                <div class="section-title">Experience</div>
+                <div style="font-size:1.02rem; color:var(--text-muted); margin-bottom:1.2rem;">
+                    As a QA Engineer at SoftKraft, I worked in a fast-paced, R&D-driven environment with minimal documentation and rapidly evolving requirements. I contributed across multiple stages of the development lifecycle—from requirement clarification and test design to automation, CI/CD integration, and release validation. <br><br>
+                    <b>Key Responsibilities & Achievements:</b>
+                    <ul style="margin:0.7rem 0 0 1.2rem; color:var(--text-main);">
+                        <li>Developed and maintained end-to-end automated test suites using TypeScript and Playwright, integrated into GitHub Actions pipelines.</li>
+                        <li>Validated RESTful APIs using Postman and Swagger, ensuring seamless and reliable data exchange across services.</li>
+                        <li>Performed both manual and automated UI tests using BrowserStack.</li>
+                        <li>Worked closely with developers, product owners, and designers in Figma, Slack, and GitHub to triage, reproduce, and resolve bugs.</li>
+                        <li>Created, maintained, and executed test plans and test cases in TestRail.</li>
+                        <li>Supported performance and basic security testing as part of release validation cycles.</li>
+                    </ul>
                 </div>
-                <div class="skills-grid">
-                    <div class="skill-card fade-in-up">
-                        <img src="qa-engineer_files/manual-tests.svg" alt="Manual Testing" class="skill-icon">
-                        <h3>Manual Testing</h3>
-                        <p>★★★★★ Excellent</p>
-                    </div>
-                    <div class="skill-card fade-in-up">
-                        <img src="qa-engineer_files/automated-tests.svg" alt="Test Automation" class="skill-icon">
-                        <h3>Test Automation</h3>
-                        <p>★★★★★ Excellent</p>
-                    </div>
-                    <div class="skill-card fade-in-up">
-                        <img src="qa-engineer_files/building-testing-scenarios.svg" alt="Test Planning" class="skill-icon">
-                        <h3>Test Planning</h3>
-                        <p>★★★★☆ Advanced</p>
-                    </div>
+            </div>
+            <div class="col">
+                <div class="section-title">Skills & Tools</div>
+                <div class="skills-list">
+                    <div class="skill"><img src="qa-engineer_files/manual-tests.svg" alt="Manual Tests"><span class="stars">★★★★★</span><span class="skill-label">Manual tests</span></div>
+                    <div class="skill"><img src="qa-engineer_files/automated-tests.svg" alt="Automated Tests"><span class="stars">★★★★★</span><span class="skill-label">Automated tests</span></div>
+                    <div class="skill"><img src="qa-engineer_files/cypress.svg" alt="Cypress"><span class="stars">★★★★☆</span><span class="skill-label">Cypress</span></div>
+                    <div class="skill"><img src="qa-engineer_files/typescript.svg" alt="TypeScript"><span class="stars">★★★★☆</span><span class="skill-label">TypeScript</span></div>
+                    <div class="skill"><img src="qa-engineer_files/javascript.svg" alt="JavaScript"><span class="stars">★★★★☆</span><span class="skill-label">JavaScript</span></div>
+                    <div class="skill"><img src="qa-engineer_files/testrail.svg" alt="TestRail"><span class="stars">★★★★☆</span><span class="skill-label">TestRail</span></div>
+                    <div class="skill"><img src="qa-engineer_files/playwright.svg" alt="Playwright"><span class="stars">★★★★☆</span><span class="skill-label">Playwright</span></div>
+                    <div class="skill"><img src="qa-engineer_files/github.svg" alt="GitHub"><span class="stars">★★★★☆</span><span class="skill-label">GitHub</span></div>
+                    <div class="skill"><img src="qa-engineer_files/postman.svg" alt="Postman"><span class="stars">★★★★☆</span><span class="skill-label">Postman</span></div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="experience-grid">
-                <div class="experience-card fade-in-up">
-                    <h3>QA Engineer</h3>
-                    <div class="company">SoftKraft</div>
-                    <div class="period">August 2021 – Present</div>
-                    <p>As a QA Engineer at SoftKraft, I worked in a fast-paced, R&D-driven environment with minimal documentation and rapidly evolving requirements. I contributed across multiple stages of the development lifecycle—from requirement clarification and test design to automation, CI/CD integration, and release validation.</p>
-                    
-                    <div class="responsibilities">
-                        <h4>Key Responsibilities & Achievements:</h4>
-                        <ul>
-                            <li><strong>Test Automation & CI/CD Integration:</strong> Developed and maintained end-to-end automated test suites using TypeScript and Playwright, integrated into GitHub Actions pipelines. This significantly reduced manual regression cycles and improved deployment confidence.</li>
-                            <li><strong>API & Backend Validation:</strong> Validated RESTful APIs using Postman and Swagger, ensuring seamless and reliable data exchange across services. Verified data consistency by directly querying PostgreSQL databases.</li>
-                            <li><strong>Cross-browser Testing:</strong> Performed both manual and automated UI tests using BrowserStack, ensuring consistent behavior across browsers and platforms.</li>
-                            <li><strong>Collaboration & Issue Management:</strong> Worked closely with developers, product owners, and designers in tools such as Figma, Slack, and GitHub to triage, reproduce, and resolve bugs based on internal QA findings and client-reported issues.</li>
-                            <li><strong>Test Documentation & Reporting:</strong> Created, maintained, and executed test plans and test cases in TestRail, providing real-time traceability and clear visibility of test coverage and results to stakeholders.</li>
-                            <li><strong>Security, Performance & Integration Testing:</strong> Supported performance testing and basic security testing efforts as part of release validation cycles. Helped optimize test strategies for large-scale document management systems deployed on AWS ECS.</li>
-                        </ul>
-                    </div>
-
-                    <div class="tech-stack">
-                        <h4>Tech Stack & Tools:</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">AWS ECS</span>
-                            <span class="tech-tag">Cypress</span>
-                            <span class="tech-tag">Playwright</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">NestJS</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">RabbitMQ</span>
-                            <span class="tech-tag">GitHub</span>
-                            <span class="tech-tag">BrowserStack</span>
-                            <span class="tech-tag">Slack</span>
-                            <span class="tech-tag">Swagger</span>
-                            <span class="tech-tag">Postman</span>
-                            <span class="tech-tag">TestRail</span>
-                            <span class="tech-tag">Figma</span>
-                            <span class="tech-tag">TailwindUI</span>
-                            <span class="tech-tag">React Query</span>
-                        </div>
-                    </div>
+        <div class="services-list">
+            <div class="service"><img src="qa-engineer_files/revisit.svg" alt="Check">Test Analysis & Design</div>
+            <div class="service"><img src="qa-engineer_files/revisit.svg" alt="Check">Test Automation</div>
+            <div class="service"><img src="qa-engineer_files/revisit.svg" alt="Check">UX/UI Testing</div>
+            <div class="service"><img src="qa-engineer_files/revisit.svg" alt="Check">Performance Optimisation</div>
+            <div class="service"><img src="qa-engineer_files/revisit.svg" alt="Check">Integration Tests</div>
+            <div class="service"><img src="qa-engineer_files/revisit.svg" alt="Check">Workflow Management</div>
+        </div>
+        <div class="cert-section">
+            <div class="section-title">Certificates</div>
+            <img src="qa-engineer_files/certified-tester-foundation-level.png" alt="ISTQB Certificate">
+        </div>
+        <div class="projects-section" id="projects">
+            <div class="section-title">Projects for customers</div>
+            <div class="project">
+                <img src="qa-engineer_files/01-gym-management-software.jpg" alt="Gym Management Software" class="project-img">
+                <div class="project-details">
+                    <div class="project-title">Comprehensive Gym Management Software</div>
+                    <div class="project-desc">A comprehensive web app ERP dedicated to gym services: member management, class scheduling, payments, and reporting. The platform integrates attendance, class and event service, and community needs under one interface.</div>
+                    <div class="project-contrib"><b>Contribution:</b> Created and maintained automated testing using Playwright, improved test reliability and coverage, integrated with CI/CD, and collaborated with the team for requirements and bug triage.</div>
+                    <a href="#" class="case-btn">View Case Study →</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="qa-engineer_files/01-contract-lifecycle-management-solution.png" alt="Contract Management System" class="project-img">
+                <div class="project-details">
+                    <div class="project-title">Contract Lifecycle Management Solution</div>
+                    <div class="project-desc">End-to-end testing of a contract management platform with complex workflow automation and document processing capabilities.</div>
+                    <div class="project-contrib"><b>Contribution:</b> Developed and executed automated tests, API validation, and collaborated with DevOps for CI/CD and release validation.</div>
+                    <a href="#" class="case-btn">View Case Study →</a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="qa-engineer_files/efficient-data-processing-for-real-estate-system_thumb.jpg" alt="Real Estate System" class="project-img">
+                <div class="project-details">
+                    <div class="project-title">Efficient Data Processing for Real Estate System</div>
+                    <div class="project-desc">Testing of a data processing system for real estate applications with complex data validation and reporting features.</div>
+                    <div class="project-contrib"><b>Contribution:</b> Responsible for validating technical quality and functionality, including CI/CD, customer acceptance, and performance management deliveries.</div>
+                    <a href="#" class="case-btn">View Case Study →</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-categories">
-                <div class="skill-category fade-in-up">
-                    <h3>Testing Skills</h3>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Manual Tests</div>
-                            <div class="skill-description">Excellent</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Test Automation</div>
-                            <div class="skill-description">Excellent</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">REST API</div>
-                            <div class="skill-description">Intermediate</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Cypress/Playwright</div>
-                            <div class="skill-description">Advanced</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Postman</div>
-                            <div class="skill-description">Advanced</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">TestRail/Qase</div>
-                            <div class="skill-description">Advanced</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Browserstack</div>
-                            <div class="skill-description">Intermediate</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category fade-in-up">
-                    <h3>Programming & Tools</h3>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">TypeScript/JavaScript</div>
-                            <div class="skill-description">Advanced</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Git</div>
-                            <div class="skill-description">Excellent</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">GitHub</div>
-                            <div class="skill-description">Advanced</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Jira/Clickup/Notion</div>
-                            <div class="skill-description">Intermediate</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Testing Scenarios/Documentation</div>
-                            <div class="skill-description">Advanced</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div>
-                            <div class="skill-name">Agile</div>
-                            <div class="skill-description">Advanced</div>
-                        </div>
-                        <div class="skill-level">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star empty">★</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 3rem;">
-                <h3 style="text-align: center; color: #667eea; margin-bottom: 2rem;">Functional Domains</h3>
-                <div class="skills-grid">
-                    <div class="skill-card fade-in-up">
-                        <h3>Business Process Optimisation and Automation</h3>
-                    </div>
-                    <div class="skill-card fade-in-up">
-                        <h3>Data Processing and Analysis</h3>
-                    </div>
-                    <div class="skill-card fade-in-up">
-                        <h3>Software Quality Strategy & Process Design</h3>
-                    </div>
-                    <div class="skill-card fade-in-up">
-                        <h3>Cross-functional Communication & Requirement Analysis</h3>
-                    </div>
-                </div>
-            </div>
+        <div class="contrib-section">
+            <div class="contrib-title">Contributions & Resources</div>
+            <div>10 Proven Steps to Quickly Write a QA Test Plan</div>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" style="background: white;">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card fade-in-up">
-                    <img src="qa-engineer_files/01-gym-management-software.jpg" alt="Gym Management Software" class="project-image">
-                    <div class="project-content">
-                        <h3>Gym Management Software</h3>
-                        <p>Comprehensive testing of a gym management system including member management, class scheduling, and payment processing features.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Manual Testing</span>
-                            <span class="tech-tag">Cypress</span>
-                            <span class="tech-tag">API Testing</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in-up">
-                    <img src="qa-engineer_files/01-contract-lifecycle-management-solution.png" alt="Contract Management System" class="project-image">
-                    <div class="project-content">
-                        <h3>Contract Lifecycle Management</h3>
-                        <p>End-to-end testing of a contract management platform with complex workflow automation and document processing capabilities.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Playwright</span>
-                            <span class="tech-tag">TestRail</span>
-                            <span class="tech-tag">Performance Testing</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in-up">
-                    <img src="qa-engineer_files/01-attendancek12.png" alt="Attendance K12 System" class="project-image">
-                    <div class="project-content">
-                        <h3>Attendance K12 System</h3>
-                        <p>Testing of an educational attendance tracking system with real-time monitoring and reporting features for K-12 institutions.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Manual Testing</span>
-                            <span class="tech-tag">Postman</span>
-                            <span class="tech-tag">Mobile Testing</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in-up">
-                    <img src="qa-engineer_files/efficient-data-processing-for-real-estate-system_thumb.jpg" alt="Real Estate System" class="project-image">
-                    <div class="project-content">
-                        <h3>Real Estate Data Processing</h3>
-                        <p>Testing of a data processing system for real estate applications with complex data validation and reporting features.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Automated Testing</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Database Testing</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-grid">
-                <div class="education-card fade-in-up">
-                    <h3>Bachelor's Degree in Computer Science</h3>
-                    <div class="institution">University, Lodz, Poland</div>
-                    <div class="period">Direction: Graphic Design</div>
-                </div>
-                <div class="education-card fade-in-up">
-                    <h3>GCSE's exams of the Technical Secondary School</h3>
-                    <div class="institution">Technical Naval Secondary School in Świnoujście, Poland</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" style="background: white;">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-card fade-in-up">
-                    <img src="qa-engineer_files/certified-tester-foundation-level.png" alt="ISTQB Foundation" class="certification-image">
-                    <h3>ISTQB CTFL - Certified Tester</h3>
-                    <p>Certificate ID: 9***9</p>
-                </div>
-                <div class="certification-card fade-in-up">
-                    <img src="qa-engineer_files/qa-test-plan.png" alt="UX/UI Course" class="certification-image">
-                    <h3>UX & UI Course: "Art of Functional Design"</h3>
-                    <p>College in Poland 2016</p>
-                </div>
-                <div class="certification-card fade-in-up">
-                    <img src="qa-engineer_files/github.svg" alt="IELTS" class="certification-image">
-                    <h3>IELTS (International English Language Testing System)</h3>
-                    <p>Academic level - Anglia Ruskin University Cambridge 2012</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Languages Section -->
-    <section id="languages">
-        <div class="container">
-            <h2 class="section-title">Languages</h2>
-            <div class="languages-grid">
-                <div class="language-card fade-in-up">
-                    <h3>English</h3>
-                    <div class="language-level">★★★★★ C1</div>
-                </div>
-                <div class="language-card fade-in-up">
-                    <h3>Polish</h3>
-                    <div class="language-level">Native</div>
-                </div>
-                <div class="language-card fade-in-up">
-                    <h3>Italian</h3>
-                    <div class="language-level">Basic</div>
-                </div>
-                <div class="language-card fade-in-up">
-                    <h3>French</h3>
-                    <div class="language-level">Basic</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hobbies Section -->
-    <section style="background: white;">
-        <div class="container">
-            <h2 class="section-title">Hobbies & Interests</h2>
-            <div class="hobbies-grid">
-                <div class="hobby-card fade-in-up">
-                    <h3>Artificial Intelligence</h3>
-                </div>
-                <div class="hobby-card fade-in-up">
-                    <h3>Science & Technology</h3>
-                </div>
-                <div class="hobby-card fade-in-up">
-                    <h3>Virtual Reality/Augmented Reality</h3>
-                </div>
-                <div class="hobby-card fade-in-up">
-                    <h3>Drones</h3>
-                </div>
-                <div class="hobby-card fade-in-up">
-                    <h3>Fantasy & SF</h3>
-                </div>
-                <div class="hobby-card fade-in-up">
-                    <h3>Mountain Hiking</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <p>I'm always interested in new opportunities and collaborations. Feel free to reach out if you'd like to discuss potential projects or have any questions about my work.</p>
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/piotr-sujecki-qa" class="contact-link" target="_blank">
-                        <img src="qa-engineer_files/github.svg" alt="LinkedIn" class="contact-icon">
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/quantumpio" class="contact-link" target="_blank">
-                        <img src="qa-engineer_files/github.svg" alt="GitHub" class="contact-icon">
-                        GitHub
-                    </a>
-                    <a href="mailto:piotr.sujecki@example.com" class="contact-link">
-                        <img src="qa-engineer_files/postman.svg" alt="Email" class="contact-icon">
-                        Email
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Piotr Sujecki. All rights reserved.</p>
-            <p>QA Engineer Portfolio</p>
-        </div>
+    </main>
+    <footer class="site-footer">
+        &copy; 2024 Piotr Sujecki. All rights reserved.
     </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards for animation
-        document.querySelectorAll('.skill-card, .experience-card, .project-card, .certification-card, .education-card, .language-card, .hobby-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Add active navigation highlighting
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
