@@ -247,10 +247,13 @@
         }
         /* Skills & Tools */
         .skills-list {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.2rem 2.2rem;
             justify-content: center;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .skill {
             display: flex;
